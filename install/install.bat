@@ -9,8 +9,8 @@ if %errorlevel% == 0 (
   winget install --id Git.Git -e --source winget
   git.exe clone https://github.com/AmericanHuston/TannerGame.git
 )
-where python 2>nul | findstr /i "python.exe"
-if %errorlevel% == 0(
+
+if exist "%LOCALAPPDATA%\Programs\Python\Python313"(
   echo Python is installed.
   goto RUNGAME
 ) else (
