@@ -209,5 +209,3 @@ while running:
     dt = clock.tick(30) / 1000
 
 pygame.quit()
-
-#
