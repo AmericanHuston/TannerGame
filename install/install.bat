@@ -9,11 +9,16 @@ if %errorlevel% == 0 (
   winget install --id Git.Git -e --source winget
   git.exe clone https://github.com/AmericanHuston/TannerGame.git
 )
-pause
 
 cd TannerGame/
-
-winget install -e --id Python.Python.3.13
+where python 2>nul | findstr /i "python.exe"
+if %errorlevel% == 0(
+  echo Python is installed.
+  goto RUNGAME
+) else (
+  winget install -e --id Python.Python.3.13
+)
+:RUNGAME
 
 pip install pygame
 
