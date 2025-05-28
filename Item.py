@@ -1,6 +1,8 @@
 import pygame
-import Sprite
+import Sprite as Sp
 import variables
+
+Sprite = Sp.Sprite
 
 class Item(): #TODO add images for items
     def __init__(self, durration: float, type: str):

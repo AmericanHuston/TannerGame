@@ -41,7 +41,10 @@ class Sprite(pygame.sprite.Sprite):
         dist = math.hypot(dx, dy)
         if dist <= 10:
             other.decrease_health("enemy", 1)
-            dx, dy = dx / dist, dy / dist 
+            try:
+                dx, dy = dx / dist, dy / dist
+            except ZeroDivisionError:
+                dist += 0.1
         else:
             dx, dy = dx / dist, dy / dist  # Normalize.
         # Move along this normalized vector towards the player at current speed.
