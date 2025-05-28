@@ -10,7 +10,7 @@ if %errorlevel% == 0 (
   git.exe clone https://github.com/AmericanHuston/TannerGame.git
 )
 
-if exist "%LOCALAPPDATA%\Programs\Python\Python313"(
+if exist "%LOCALAPPDATA%\Programs\Python\Python313\python.exe"(
   echo Python is installed.
   goto RUNGAME
 ) else (
