@@ -1,5 +1,9 @@
 @echo off
 
+if exist "./TannerGame/game.py" (
+  goto RUNGAME
+)
+
 where git 2>nul | findstr /i "git.exe"
 if %errorlevel% == 0 (
   echo Git is installed.
@@ -12,13 +16,14 @@ if %errorlevel% == 0 (
 
 if exist "%LOCALAPPDATA%\Programs\Python\Python313\python.exe" (
   echo Python is installed.
-  goto RUNGAME
+  goto SKIP_PY
 ) else (
   echo Python is not installed, installing now
   winget install -e --id Python.Python.3.13
 )
+:SKIP_PY
+pip install pygame
 :RUNGAME
 cd TannerGame/
-pip install pygame
 python ./game.py
 pause
