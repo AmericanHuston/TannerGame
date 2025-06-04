@@ -4,12 +4,21 @@ import random
 import math
 from pygame.locals import *
 from pygame import mixer
+import argparse
 import Sprite as Sp
 import Item as It
 import HealthBar as Hb
 import ItemBox as Ib
 
-#TODO Split objects into their own files
+#-------Current version is 0.1.0-------#
+
+parser = argparse.ArgumentParser(description="Checking version")
+parser.add_argument("--version", action="store_true")
+args = parser.parse_args()
+if (args.version):
+    print("0.1.0") #current version goes here
+    exit()
+
 ItemBox = Ib.ItemBox
 HealthBar = Hb.Healthbar
 Item = It.Item
