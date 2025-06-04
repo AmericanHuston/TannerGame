@@ -14,7 +14,7 @@ if %errorlevel% == 0 (
   git.exe clone https://github.com/AmericanHuston/TannerGame.git
 )
 
-if exist "%LOCALAPPDATA%\Programs\Python\Python313\python.exe" (
+if exist "%LOCALAPPDATA%\Programs\Python\Python*\python.exe" (
   echo Python is installed.
   goto SKIP_PY
 ) else (
