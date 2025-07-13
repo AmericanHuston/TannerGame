@@ -1,6 +1,8 @@
 @echo off
 
 if exist "./TannerGame/game.py" (
+  set /p local_version=< version.txt
+  Invoke-WebRequest -Uri https://versiontannergame.nasa.undo.it/
   goto RUNGAME
 )
 

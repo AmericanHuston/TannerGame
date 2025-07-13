@@ -3,8 +3,11 @@ import math
 import random
 import Sprite as Sp
 import variables
+import datetime
 
 Sprite = Sp.Sprite
+
+random.seed = datetime.time
 
 class ItemBox():
     def __init__(self, health: int, item_inside: str = (variables.possible_items[random.randrange(0,2)]), id: str = "box", x: int = 0, y: int = 0, box_size: int = 10, damage_spacing: int = 300):
@@ -49,5 +52,10 @@ class ItemBox():
             return True
         else:
             return False
-    def revive(self):
-        self.item_inside
+    def revive(self, health = 4):
+        self.item_inside = variables.possible_items[random.randrange(0,2)]
+        self.health = health
+    def set_cords(self, x, y):
+        self.x = x
+        self.y = y
+

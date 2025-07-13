@@ -1,8 +1,13 @@
 import pygame
 import Sprite as Sp
 import variables
+import math
 
 Sprite = Sp.Sprite
+
+def calc_dist(item1, item2):
+    dx, dy = item2.rect.x - item1.rect.x, item2.rect.y - item1.rect.y
+    return math.hypot(dx, dy)
 
 class Item(): #TODO add images for items
     def __init__(self, durration: float, type: str):
@@ -18,6 +23,8 @@ class Item(): #TODO add images for items
     def set_cordinates(self, x: int, y: int):
         self.rect.x = x
         self.rect.y = y
+    def set_type(self, type: str):
+        self.type = type
     def attach(self, attach_to_object: Sprite):
             if self.type == variables.possible_items[0]:
                 print("stuff 0 happened")
@@ -53,16 +60,22 @@ class Item(): #TODO add images for items
         return self.attached
     def can_use(self):
         return not self.used
-    def use(self, user: Sprite): #TODO check item durration for weapons (dissable use before time is up)
-        self.used = 1
+    def use(self, user: Sprite, target: Sprite): #TODO check item durration for weapons (dissable use before time is up)
         if self.type == "healer" and self.is_attached():
             user.increase_health("Used Healer", 1)
             self.detach()
+            self.used = 1
         elif self.type == "ranged_weapon" and self.is_attached():
             print("need to fill this (ranged_weapon)")
             self.detach() #todo Remove after checking durration
+            self.used = 1
         elif self.type == "close_weapon" and self.is_attached():
             print("need to fill this (close_weapon)")
-            self.detach() #todo Remove after checking durration
+            if calc_dist(self, target) < 40:
+                target.decrease_health("Player used a weapon!", 1)
+                self.detach()
+                self.used = 1
+            else:
+                print("Enemy was too far away...")
     def unuse(self):
         self.used = 0
