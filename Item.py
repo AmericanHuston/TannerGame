@@ -27,15 +27,15 @@ class Item(): #TODO add images for items
         self.type = type
     def attach(self, attach_to_object: Sprite):
             if self.type == variables.possible_items[0]:
-                print("stuff 0 happened")
+                #print("stuff 0 happened")
                 self.rect.x = attach_to_object.rect.x + attach_to_object.radius
                 self.rect.y = attach_to_object.rect.y
             elif self.type == variables.possible_items[1]:
-                print("stuff 1 happened")
+                #print("stuff 1 happened")
                 self.rect.x = attach_to_object.rect.x + attach_to_object.radius
                 self.rect.y = attach_to_object.rect.y
             elif self.type == variables.possible_items[2]:
-                print("stuff 2 happened")
+                #print("stuff 2 happened")
                 self.rect.x = attach_to_object.rect.x + attach_to_object.radius
                 self.rect.y = attach_to_object.rect.y
             else:
