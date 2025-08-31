@@ -147,6 +147,7 @@ while running:
     #makes next screen get rendered
     all_sprites_list.update()
     all_sprites_list.draw(screen)
+    all_sprites_list.remove(Enemy)
     if running:
         running = Player.check_health()
     pygame.display.flip()
